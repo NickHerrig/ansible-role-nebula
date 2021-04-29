@@ -1,0 +1,4 @@
+---
+# Create and distribute device, and node certificates
+# Add option to skip this if folks want to do this with a script?
+# Create a real certificate authority other than local laptop?

@@ -1,2 +1,4 @@
 ---
-# tasks file for nebula
+# Tie tasks together
+# configure
+# optionally configure and deploy certs from local

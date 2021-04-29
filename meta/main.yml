@@ -9,6 +9,7 @@ galaxy_info:
     - focal 
   galaxy_tags:
     - nebula
+    - networking
     - mesh
     - vpn
     - tunnel

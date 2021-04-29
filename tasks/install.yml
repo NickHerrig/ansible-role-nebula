@@ -1,0 +1,49 @@
+---
+- name: create nebula group
+  group:
+    name: nebula
+    system: true
+    state: present
+  become_user: root
+  become: true
+
+- name: create nebula user
+  user:
+    name: nebula
+    group: nebula
+    shell: "/usr/sbin/nologin"
+    system: true
+    createhome: false
+    state: present
+  become_user: root
+  become: true
+
+- name: create nebula install and configuration directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: nebula
+    group: nebula
+    mode: 0755
+  with_items:
+    - "{{ nebula_config_dir }}"
+    - "/tmp/{{ nebula_version }}"
+  become_user: root
+  become: true
+
+- name: install nebula package
+  get_url:
+    url: "{{ nebula_download_url }}/v{{ nebula_version }}/nebula-{{ nebula_arch }}.tar.gz"
+    dest: "/tmp/{{ nebula_version }}/nebula-{{ nebula_arch }}.tar.gz"
+  retries: 5
+  delay: 2
+  become_user: root
+  become: true
+
+- name: unarchive nebula package
+  unarchive:
+    src: "/tmp/{{ nebula_version }}/nebula-{{ nebula_arch }}.tar.gz"
+    dest: "/tmp/{{ nebula_version }}"
+    remote_src: yes
+    creates: "tmp/{{ nebula_version }}/nebula-{{ nebula_arch }}/nebula"
+  become_user: root
