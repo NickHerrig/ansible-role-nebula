@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Nick Herrig 
+  description: Nebula for Linux. 
+  license: license (BSD, MIT)
+  min_ansible_version: 2.10
+  platforms:
+  - name: Ubuntu 
+    versions:
+    - focal 
+  galaxy_tags:
+    - nebula
+    - mesh
+    - vpn
+    - tunnel
+    - lighthouse
+    - server
+    - host
+    - certificate
+    - system
+    - web
+    - orchestration
