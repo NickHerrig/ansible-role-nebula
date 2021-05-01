@@ -1,5 +1,7 @@
 galaxy_info:
   author: Nick Herrig 
+  role_name: nebula
+  namespace: nickherrig
   description: Nebula for Linux. 
   license: license (BSD, MIT)
   min_ansible_version: 2.10

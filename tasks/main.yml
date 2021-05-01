@@ -1,4 +1,6 @@
 ---
-# Tie tasks together
-# configure
-# optionally configure and deploy certs from local
+- name: install nebula binaries on nodes
+  include_tasks: install.yml
+
+- name: provision and delpoy CA and node. provision devices certs.
+  include_tasks: certs.yml

@@ -47,3 +47,19 @@
     remote_src: yes
     creates: "tmp/{{ nebula_version }}/nebula-{{ nebula_arch }}/nebula"
   become_user: root
+
+- name: copy nebula binaries
+  copy:
+    src: "/tmp/{{ nebula_version }}/{{ item }}"
+    dest: "{{ nebula_install_dir }}/{{ item }}"
+    mode: 0755
+    owner: root
+    group: root
+    remote_src: yes
+  with_items:
+    - nebula
+    - nebula-cert
+  become_user: root
+  become: true
+  #  notify:
+  #    - restart nebula
