@@ -1,13 +1,11 @@
 ---
-#TODO: Support porvision of multiple CA files
-
 - name: create certificate authority directories on CA
   delegate_to: "{{ nebula_ca }}"
   file:
     path: "{{ nebula_ca_dir }}"
     state: directory
 
-- name: Create the organization certificate authority
+- name: create the organization certificate authority
   delegate_to: '{{ nebula_ca }}'
   command: 'nebula-cert ca -name "{{ nebula_ca_name }}"'
   run_once: true
@@ -15,3 +13,13 @@
     chdir: "{{ nebula_ca_dir }}"
     creates: "{{ nebula_ca_dir }}/ca.crt"
 
+    #- name: D E B U G 
+    #  ansible.builtin.debug:
+    #    msg: "{{ 'nebula-cert sign -name ' + nebula_hostname + ' -ip ' + nebula_ip + nebula_cidr + ' -groups ' + nebula_groups }}"
+
+- name: sign certificates for nebula nodes 
+  delegate_to: '{{ nebula_ca }}'
+  command: "{{ 'nebula-cert sign -name ' + nebula_hostname + ' -ip ' + nebula_ip + nebula_cidr + ' -groups ' + nebula_groups }}"
+  args:
+    chdir: "{{ nebula_ca_dir }}"
+    creates: "{{ nebula_ca_dir }}/{{ nebula_hostname }}.crt"

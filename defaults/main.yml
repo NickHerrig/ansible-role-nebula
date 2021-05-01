@@ -11,3 +11,6 @@ nebula_is_lighthouse: false
 nebula_ca: localhost 
 nebula_ca_name: ~
 nebula_ca_dir: ~
+
+#Nebula global network configuration
+nebula_cidr: "/24"

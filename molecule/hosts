@@ -2,12 +2,14 @@ nebula:
   hosts:
     lighthouse-one:
       nebula_is_lighthouse: true
-      nebula_arch: linux-amd64
-      nebula_hostname: lighthouse
+      nebula_hostname: lighthouse-one
       nebula_ip: 10.0.3.1
-      nebula_groups: "digitalocean,vm,ubuntu,lighthouse"
+      nebula_groups: "lightouse"
     node-one:
-      nebula_arch: linux-amd64
-      nebula_hostname: lighthouse
-      nebula_ip: 10.0.3.1
-      nebula_groups: "digitalocean,vm,ubuntu,lighthouse"
+      nebula_hostname: node-one 
+      nebula_ip: 10.0.3.2
+      nebula_groups: "node"
+    cert-authority:
+      nebula_hostname: cert-authority 
+      nebula_ip: 10.0.3.3
+      nebula_groups: "ca,vm"
