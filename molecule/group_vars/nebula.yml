@@ -1,0 +1,5 @@
+---
+nebula_ca_name: "Test Inc"
+nebula_ca_dir: "~/git/ansible-role-nebula/certs/"
+
+nebula_lighthouse_public_ip: ~

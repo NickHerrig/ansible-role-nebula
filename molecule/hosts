@@ -1,0 +1,13 @@
+nebula:
+  hosts:
+    lighthouse-one:
+      nebula_is_lighthouse: true
+      nebula_arch: linux-amd64
+      nebula_hostname: lighthouse
+      nebula_ip: 10.0.3.1
+      nebula_groups: "digitalocean,vm,ubuntu,lighthouse"
+    node-one:
+      nebula_arch: linux-amd64
+      nebula_hostname: lighthouse
+      nebula_ip: 10.0.3.1
+      nebula_groups: "digitalocean,vm,ubuntu,lighthouse"

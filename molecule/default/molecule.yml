@@ -1,0 +1,37 @@
+---
+dependency:
+  name: galaxy
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
+driver:
+  name: docker
+platforms:
+  - name: lighthouse-one 
+    image: centos:8
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - nebula
+  - name: node-one 
+    image: centos:8
+    command: /sbin/init
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - nebula
+provisioner:
+  name: ansible
+  inventory:
+    links:
+      hosts: ../hosts
+      group_vars: ../group_vars/
+verifier:
+  name: ansible
