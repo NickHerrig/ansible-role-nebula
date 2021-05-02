@@ -9,16 +9,7 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: cert-authority 
-    image: centos:8
-    command: /sbin/init
-    capabilities:
-      - SYS_ADMIN
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    groups:
-      - nebula
-  - name: lighthouse-one 
+  - name: lighthouse
     image: centos:8
     command: /sbin/init
     capabilities:
