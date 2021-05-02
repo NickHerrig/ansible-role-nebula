@@ -1,15 +1,11 @@
 nebula:
   hosts:
-    lighthouse-one:
+    lighthouse:
       nebula_is_lighthouse: true
-      nebula_hostname: lighthouse-one
+      nebula_hostname: lighthouse
       nebula_ip: 10.0.3.1
       nebula_groups: "lightouse"
     node-one:
       nebula_hostname: node-one 
       nebula_ip: 10.0.3.2
-      nebula_groups: "node"
-    cert-authority:
-      nebula_hostname: cert-authority 
-      nebula_ip: 10.0.3.3
-      nebula_groups: "ca,vm"
+      nebula_groups: "node,vm"

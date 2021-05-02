@@ -1,24 +1,36 @@
 ---
 - name: create certificate authority directories on CA
-  delegate_to: "{{ nebula_ca }}"
+  delegate_to: localhost 
   file:
     path: "{{ nebula_ca_dir }}"
     state: directory
 
 - name: create the organization certificate authority
-  delegate_to: '{{ nebula_ca }}'
+  delegate_to: localhost 
   command: 'nebula-cert ca -name "{{ nebula_ca_name }}"'
   run_once: true
   args:
     chdir: "{{ nebula_ca_dir }}"
     creates: "{{ nebula_ca_dir }}/ca.crt"
 
+- name: copy ca.crt to nodes
+  copy:
+    src: "{{ nebula_ca_dir }}/ca.crt"
+    dest: "{{ nebula_config_dir }}/ca.crt"
+    owner: nebula
+    group: nebula
+    mode: 0644
+  become_user: root
+  become: true
+  notify:
+    - restart nebula
+    
     #- name: D E B U G 
     #  ansible.builtin.debug:
     #    msg: "{{ 'nebula-cert sign -name ' + nebula_hostname + ' -ip ' + nebula_ip + nebula_cidr + ' -groups ' + nebula_groups }}"
 
 - name: sign certificates for nebula nodes 
-  delegate_to: '{{ nebula_ca }}'
+  delegate_to: localhost 
   command: "{{ 'nebula-cert sign -name ' + nebula_hostname + ' -ip ' + nebula_ip + nebula_cidr + ' -groups ' + nebula_groups }}"
   args:
     chdir: "{{ nebula_ca_dir }}"

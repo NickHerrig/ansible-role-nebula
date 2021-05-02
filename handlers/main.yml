@@ -1,2 +1,7 @@
 ---
-# handlers file for nebula
+- name: restart nebula
+  become: true
+  systemd:
+    daemon_reload: true
+    name: nebula
+    state: restarted

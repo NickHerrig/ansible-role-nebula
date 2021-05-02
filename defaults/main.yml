@@ -8,7 +8,6 @@ nebula_install_dir: /usr/local/bin
 nebula_is_lighthouse: false
 
 #Certificate authority related variables
-nebula_ca: localhost 
 nebula_ca_name: ~
 nebula_ca_dir: ~
 
