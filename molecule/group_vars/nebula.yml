@@ -2,4 +2,12 @@
 nebula_ca_name: "Test, Inc"
 nebula_ca_dir: "~/git/ansible-role-nebula/certs/"
 
+nebula_client_devices:
+  - nebula_hostname: "laptop"
+    nebula_ip: 10.0.3.3
+    nebula_groups: "laptop,ssh"
+  - nebula_hostname: "phone"
+    nebula_ip: 10.0.3.4
+    nebula_groups: "phone"
+
 nebula_lighthouse_public_ip: ~
