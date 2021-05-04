@@ -22,8 +22,8 @@
     mode: 0644
   become_user: root
   become: true
-  notify:
-    - restart nebula
+  #  notify:
+  #    - restart nebula
     
     #- name: D E B U G 
     #  ansible.builtin.debug:
@@ -57,5 +57,5 @@
   with_items:
     - "{{ nebula_hostname }}.crt"
     - "{{ nebula_hostname }}.key"
-  notify:
-    - restart nebula
+      #  notify:
+      #    - restart nebula
