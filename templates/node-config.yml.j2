@@ -1,0 +1,68 @@
+{{ ansible_managed | comment }}
+
+pki:
+  ca: {{ nebula_config_dir }}/ca.crt 
+  cert: {{ nebula_config_dir }}/{{ nebula_hostname }}.crt
+  key: {{ nebula_config_dir }}/{{ nebula_hostname }}.key
+  
+{% if nebula_is_lighthouse %}
+static_host_map:
+
+lighthouse:
+  am_lighthouse: true 
+
+{% else %}
+static_host_map:
+  "{{ nebula_lighthouse_private_ip }}": ["{{ nebula_lighthouse_public_ip }}:{{ nebula_port }}"]
+
+lighthouse:
+  am_lighthouse: false
+  interval: 60
+  hosts:
+    - "{{ nebula_lighthouse_private_ip }}"
+{% endif %}
+
+listen:
+  host: 0.0.0.0
+{% if nebula_is_lighthouse %}
+  port: {{ nebula_port }}
+{% else %}
+  port: 0
+{% endif %}
+
+punchy:
+  punch: true
+  respond: true
+
+cipher: chachapoly
+
+tun:
+  disabled: false
+  dev: nebula1
+  drop_local_broadcast: false
+  drop_multicast: false
+  tx_queue: 500
+  mtu: 1300
+  routes:
+  unsafe_routes:
+
+logging:
+  level: info
+  format: text
+
+firewall:
+  conntrack:
+    tcp_timeout: 12m
+    udp_timeout: 3m
+    default_timeout: 10m
+    max_connections: 100000
+
+  outbound:
+    - port: any
+      proto: any
+      host: any
+
+  inbound:
+    - port: any
+      proto: any 
+      host: any

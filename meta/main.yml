@@ -1,14 +1,15 @@
+---
 galaxy_info:
-  author: Nick Herrig 
+  author: Nick Herrig
   role_name: nebula
   namespace: nickherrig
-  description: Nebula for Linux. 
+  description: Nebula for Linux.
   license: license (BSD, MIT)
   min_ansible_version: 2.10
   platforms:
-  - name: Ubuntu 
-    versions:
-    - focal 
+    - name: Ubuntu
+      versions:
+        - focal
   galaxy_tags:
     - nebula
     - networking

@@ -10,6 +10,13 @@ Prior to using this role, I'd recommend giving the
 [general nebula](https://www.defined.net/nebula/introduction/) 
 documentation a skim.
 
+## Contributing
+This role is heavily influenced from the setup steps documented 
+in the nebula [quick start](https://www.defined.net/nebula/quick-start/)
+documentation. Because of this it doesn't contain some of the highly
+custamizable nebula options. If you'd like to see some implemented, 
+open up an issue, fork, and create a PR!
+
 ## Requirements
 
 ### A Lighthouse is Required

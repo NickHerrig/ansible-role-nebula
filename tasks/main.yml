@@ -4,3 +4,6 @@
 
 - name: provision and delpoy CA and node. provision devices certs.
   include_tasks: certs.yml
+
+- name: create config.yml for devices and hosts, setup systemd
+  include_tasks: configure.yml

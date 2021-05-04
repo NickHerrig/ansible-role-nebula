@@ -1,0 +1,46 @@
+---
+- name: create device configuration directory
+  delegate_to: localhost
+  file:
+    path: "{{ nebula_device_config_dir }}"
+    state: directory
+
+- name: copy nebula node-config.yml file to servers
+  template:
+    src: node-config.yml.j2
+    dest: "{{ nebula_config_dir }}/config.yml"
+    owner: nebula
+    group: nebula
+    mode: 0644
+  become_user: root
+  become: true
+  notify:
+    - restart nebula
+
+- name: create nebula config.yml for devices
+  template:
+    src: device-config.yml.j2
+    dest: "{{ nebula_device_config_dir }}/{{ item.nebula_hostname }}.yml"
+  delegate_to: localhost
+  run_once: true
+  with_items: "{{ nebula_client_devices }}"
+
+- name: create nebula systemd service unit
+  template:
+    src: nebula.service.j2
+    dest: /etc/systemd/system/nebula.service
+    owner: root
+    group: root
+    mode: 0644
+  become_user: root
+  become: true
+  notify:
+    - restart nebula
+
+- name: ensure nebula service is started and enabled
+  systemd:
+    daemon_reload: true
+    name: nebula
+    enabled: true
+  become_user: root
+  become: true

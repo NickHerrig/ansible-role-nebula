@@ -22,21 +22,17 @@
     mode: 0644
   become_user: root
   become: true
-  #  notify:
-  #    - restart nebula
-    
-    #- name: D E B U G 
-    #  ansible.builtin.debug:
-    #    msg: "{{ 'nebula-cert sign -name ' + nebula_hostname + ' -ip ' + nebula_ip + nebula_cidr + ' -groups ' + nebula_groups }}"
+  notify:
+    - restart nebula
 
-- name: sign certificates for nebula nodes 
+- name: sign certificates for nebula nodes
   delegate_to: "{{ nebula_ca }}"
   command: "{{ 'nebula-cert sign -name ' + nebula_hostname + ' -ip ' + nebula_ip + nebula_cidr + ' -groups ' + nebula_groups }}"
   args:
     chdir: "{{ nebula_ca_dir }}"
     creates: "{{ nebula_ca_dir }}/{{ nebula_hostname }}.crt"
 
-- name: sign certificates for nebula client devices 
+- name: sign certificates for nebula client devices
   delegate_to: "{{ nebula_ca }}"
   command: "{{ 'nebula-cert sign -name ' + item.nebula_hostname + ' -ip ' + item.nebula_ip + nebula_cidr + ' -groups ' + item.nebula_groups }}"
   args:
@@ -45,7 +41,7 @@
   run_once: true
   loop: "{{ nebula_client_devices }}"
 
-- name: copy cert file to node 
+- name: copy cert file to node
   copy:
     src: "{{ nebula_ca_dir }}/{{ item }}"
     dest: "{{ nebula_config_dir }}/{{ item }}"
@@ -57,5 +53,5 @@
   with_items:
     - "{{ nebula_hostname }}.crt"
     - "{{ nebula_hostname }}.key"
-      #  notify:
-      #    - restart nebula
+  notify:
+    - restart nebula

@@ -5,7 +5,6 @@ lint: |
   set -e
   yamllint .
   ansible-lint
-  flake8
 driver:
   name: docker
 platforms:
@@ -18,7 +17,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     groups:
       - nebula
-  - name: node-one 
+  - name: node-one
     image: centos:8
     command: /sbin/init
     capabilities:
