@@ -1,8 +1,7 @@
 ---
 - name: restart nebula
-  become: true
-  become_user: nebula
   systemd:
     daemon_reload: true
     name: nebula
     state: restarted
+  become: true

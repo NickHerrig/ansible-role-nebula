@@ -47,6 +47,7 @@
     remote_src: true
     creates: "tmp/{{ nebula_version }}/nebula-{{ nebula_arch }}/nebula"
   become_user: root
+  become: true
 
 - name: copy nebula binaries
   copy:
