@@ -20,3 +20,11 @@ nebula_is_lighthouse: false
 nebula_port: 4242
 nebula_lighthouse_private_ip: ~
 nebula_lighthouse_public_ip: ~
+nebula_outbound_firewall_rules: |
+  - port: any
+    proto: any
+    host: any
+nebula_inbound_firewall_rules: |
+  - port: any
+    proto: icmp
+    host: any

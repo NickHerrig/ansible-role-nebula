@@ -10,6 +10,22 @@ nebula_client_devices:
   - nebula_hostname: "laptop"
     nebula_ip: 10.0.3.3
     nebula_groups: "laptop,ssh"
+    nebula_outbound_firewall_rules: |
+      - port: any
+        proto: any
+        host: any
+    nebula_inbound_firewall_rules: |
+      - port: any
+        proto: icmp
+        host: any
   - nebula_hostname: "phone"
     nebula_ip: 10.0.3.4
     nebula_groups: "phone"
+    nebula_outbound_firewall_rules: |
+      - port: any
+        proto: any
+        host: any
+    nebula_inbound_firewall_rules: |
+      - port: any
+        proto: icmp
+        host: any

@@ -46,8 +46,7 @@ firewall:
     max_connections: 100000
 
   outbound:
-    - port: any
-      proto: any
-      host: any
+    {{ item.nebula_outbound_firewall_rules | indent( width=4 ) }}
 
   inbound:
+    {{ item.nebula_inbound_firewall_rules | indent( width=4 ) }}

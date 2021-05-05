@@ -39,7 +39,7 @@ TBD
 ```yaml
   - hosts: all 
     roles:
-    - nickherrig.ansible-role-nebula
+    - nickherrig.nebula
 ```
 
 # License
