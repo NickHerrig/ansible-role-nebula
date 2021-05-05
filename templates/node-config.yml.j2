@@ -13,7 +13,7 @@ lighthouse:
 
 {% else %}
 static_host_map:
-  "{{ nebula_lighthouse_private_ip }}": ["{{ nebula_lighthouse_public_ip }}:{{ nebula_port }}"]
+  "{{ nebula_lighthouse_private_ip }}": ["{{ nebula_lighthouse_public_ip }}:{{ nebula_lighthouse_port }}"]
 
 lighthouse:
   am_lighthouse: false
@@ -25,7 +25,7 @@ lighthouse:
 listen:
   host: 0.0.0.0
 {% if nebula_is_lighthouse %}
-  port: {{ nebula_port }}
+  port: {{ nebula_lighthouse_port }}
 {% else %}
   port: 0
 {% endif %}
@@ -58,11 +58,7 @@ firewall:
     max_connections: 100000
 
   outbound:
-    - port: any
-      proto: any
-      host: any
+    {{ nebula_outbound_firewall_rules | indent( width=4 ) }}
 
   inbound:
-    - port: any
-      proto: any 
-      host: any
+    {{ nebula_inbound_firewall_rules | indent( width=4 ) }}

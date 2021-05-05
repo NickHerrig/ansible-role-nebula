@@ -1,12 +1,12 @@
 {{ ansible_managed  | comment }}
 
 pki:
-  ca: {{ nebula_config_dir }}/ca.crt
-  cert: {{ nebula_config_dir }}/{{ item.nebula_hostname }}.crt
-  key: {{ nebula_config_dir }}/{{ item.nebula_hostname }}.key
+  ca: {{ nebula_ca_dir }}/ca.crt
+  cert: {{ nebula_ca_dir }}/{{ item.nebula_hostname }}.crt
+  key: {{ nebula_ca_dir }}/{{ item.nebula_hostname }}.key
 
 static_host_map:
-  "{{ nebula_lighthouse_private_ip }}": ["{{ nebula_lighthouse_public_ip }}:{{ nebula_port }}"]
+  "{{ nebula_lighthouse_private_ip }}": ["{{ nebula_lighthouse_public_ip }}:{{ nebula_lighthouse_port }}"]
 
 lighthouse:
   interval: 60
@@ -46,8 +46,7 @@ firewall:
     max_connections: 100000
 
   outbound:
-    - port: any
-      proto: any
-      host: any
+    {{ item.nebula_outbound_firewall_rules | indent( width=4 ) }}
 
   inbound:
+    {{ item.nebula_inbound_firewall_rules | indent( width=4 ) }}

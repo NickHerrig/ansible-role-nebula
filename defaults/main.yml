@@ -6,17 +6,42 @@ nebula_download_url: https://github.com/slackhq/nebula/releases/download
 nebula_arch: linux-amd64
 nebula_install_dir: /usr/local/bin
 
-# Certificate authority related variables
+# Certificate authority and configuration related variables
 nebula_ca: localhost
 nebula_ca_name: ~
 nebula_ca_dir: ~
-
-# Location on localhost where configs will be placed
 nebula_device_config_dir: ~
 
 # Nebula network default variables
 nebula_cidr: "/24"
-nebula_is_lighthouse: false
-nebula_port: 4242
+nebula_lighthouse_port: 4242
 nebula_lighthouse_private_ip: ~
 nebula_lighthouse_public_ip: ~
+
+# Nebula Host Variables
+nebula_is_lighthouse: false
+nebula_hostname: ~
+nebula_ip: ~
+nebula_groups: ~
+nebula_outbound_firewall_rules: |
+  - port: any
+    proto: any
+    host: any
+nebula_inbound_firewall_rules: |
+  - port: any
+    proto: icmp
+    host: any
+
+# Nebula Client Device Variables
+nebula_client_devices: ~
+#  - nebula_hostname: "laptop"
+#    nebula_ip: 10.0.3.3
+#    nebula_groups: "laptop,ssh"
+#    nebula_outbound_firewall_rules: |
+#      - port: any
+#        proto: any
+#        host: any
+#    nebula_inbound_firewall_rules: |
+#      - port: any
+#        proto: icmp
+#        host: any
