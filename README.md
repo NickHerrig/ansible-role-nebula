@@ -26,7 +26,6 @@ to run nebula on your laptop, so it's best to install the latest
 | -------- | --------| ----------- |
 | nebula_config_dir | /etc/nebula | directory where certs and configs will live on hosts |
 | nebula_version | 1.3.0 | version of nebula to be install on hosts | 
-| nebula_download_url | https://github.com/slackhq/nebula/releases/download | nebula github release url | 
 | nebula_arch | linux-amd64 | chip arcitecture of devices used for installing correct nebula binary | 
 | nebula_install_dir | /usr/local/bin | location where nebula binary will be installed on hosts | 
 
@@ -54,8 +53,8 @@ to run nebula on your laptop, so it's best to install the latest
 | nebula_hostname | ~ | name of the host for the nebula network ex: "webserver" | 
 | nebula_ip | ~ | host ip address for the nebula network ex: 10.100.0.12 |
 | nebula_groups | ~ | nebula groups the node belongs to ex: "vm,webserver,digitalocean" |
-| nebula_outbound_firewall_rules | [see defaults](/defaults/main.yml#L26) | a list of outbound firewall rules for the host |
-| nebula_inbound_firewall_rules  | [see defaults](/defaults/main.yml#L30) | a list of inbound firewall rules for the host | 
+| nebula_outbound_firewall_rules | [see defaults](/defaults/main.yml#L25) | a list of outbound firewall rules for the host |
+| nebula_inbound_firewall_rules  | [see defaults](/defaults/main.yml#L29) | a list of inbound firewall rules for the host | 
 
 ### Nebula Client Device Variable 
 | Variable | Default | Description |

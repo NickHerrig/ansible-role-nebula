@@ -2,7 +2,6 @@
 # Reasonable installation defaults
 nebula_config_dir: /etc/nebula
 nebula_version: 1.3.0
-nebula_download_url: https://github.com/slackhq/nebula/releases/download
 nebula_arch: linux-amd64
 nebula_install_dir: /usr/local/bin
 

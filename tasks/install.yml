@@ -33,7 +33,7 @@
 
 - name: install nebula package
   get_url:
-    url: "{{ nebula_download_url }}/v{{ nebula_version }}/nebula-{{ nebula_arch }}.tar.gz"
+    url: "https://github.com/slackhq/nebula/releases/download/v{{ nebula_version }}/nebula-{{ nebula_arch }}.tar.gz"
     dest: "/tmp/{{ nebula_version }}/nebula-{{ nebula_arch }}.tar.gz"
   retries: 5
   delay: 2
