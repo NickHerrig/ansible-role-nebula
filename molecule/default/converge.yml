@@ -1,7 +1,5 @@
 ---
 - name: Converge
-  hosts: nebula
-  tasks:
-    - name: "Include nebula"
-      include_role:
-        name: "ansible-role-nebula"
+  hosts: all
+  roles:
+    - role: nickherrig.nebula
