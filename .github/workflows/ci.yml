@@ -13,7 +13,6 @@ defaults:
     working-directory: 'nick.nebula'
 
 jobs:
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -40,19 +39,21 @@ jobs:
     strategy:
       matrix:
         distro:
-          - centos8
-          - centos7
           - ubuntu2004
-          - ubuntu1804
-          - debian10
-          - debian9
-          - fedora33
 
     steps:
+
       - name: Check out the codebase.
         uses: actions/checkout@v2
         with:
           path: 'nick.nebula'
+
+      - name: install nebula
+        run: |
+          wget https://github.com/slackhq/nebula/releases/download/v1.3.0/nebula-linux-amd64.tar.gz
+          tar -xf nebula-linux-amd64.tar.gz
+          cp nebula-cert $GITHUB_WORKSPACE
+          echo $GITHUB_WORKSPACE >> $GITHUB_PATH
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
