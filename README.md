@@ -3,6 +3,8 @@
 An Ansible Role that installs [Nebula](https://www.defined.net/nebula/)
 on Linux.
 
+[![CI](https://github.com/NickHerrig/ansible-role-nebula/actions/workflows/ci.yml/badge.svg)](https://github.com/NickHerrig/ansible-role-nebula/actions/workflows/ci.yml)
+
 ## Requirements
 
 ### A Lighthouse is Required
