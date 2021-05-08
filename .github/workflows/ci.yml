@@ -39,7 +39,13 @@ jobs:
     strategy:
       matrix:
         distro:
+          - centos8
+          - centos7
           - ubuntu2004
+          - ubuntu1804
+          - debian10
+          - debian9
+          - fedora33
 
     steps:
 
