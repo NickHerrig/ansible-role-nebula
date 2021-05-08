@@ -48,7 +48,7 @@ jobs:
         with:
           path: 'nick.nebula'
 
-      - name: install nebula
+      - name: install nebula-cert
         run: |
           wget https://github.com/slackhq/nebula/releases/download/v1.3.0/nebula-linux-amd64.tar.gz
           tar -xf nebula-linux-amd64.tar.gz
