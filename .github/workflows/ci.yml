@@ -56,7 +56,7 @@ jobs:
 
       - name: install nebula-cert
         run: |
-          wget https://github.com/slackhq/nebula/releases/download/v1.3.0/nebula-linux-amd64.tar.gz
+          wget https://github.com/slackhq/nebula/releases/download/v1.4.0/nebula-linux-amd64.tar.gz
           tar -xf nebula-linux-amd64.tar.gz
           cp nebula-cert $GITHUB_WORKSPACE
           echo $GITHUB_WORKSPACE >> $GITHUB_PATH

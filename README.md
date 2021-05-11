@@ -27,7 +27,7 @@ to run nebula on your laptop, so it's best to install the latest
 | Variable | Default | Description |
 | -------- | --------| ----------- |
 | nebula_config_dir | /etc/nebula | directory where certs and configs will live on hosts |
-| nebula_version | 1.3.0 | version of nebula to be install on hosts | 
+| nebula_version | 1.4.0 | version of nebula to be install on hosts | 
 | nebula_arch | linux-amd64 | chip arcitecture of devices used for installing correct nebula binary | 
 | nebula_install_dir | /usr/local/bin | location where nebula binary will be installed on hosts | 
 
