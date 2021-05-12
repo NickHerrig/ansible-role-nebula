@@ -47,6 +47,7 @@ to run nebula on your laptop, so it's best to install the latest
 | nebula_lighthouse_port | 4242 | static port nebula lighthouse will run on, other hosts use dynamic ports | 
 | nebula_lighthouse_private_ip | ~ | private nebula ip address of the lighthouse node | 
 | nebula_lighthouse_public_ip | ~ | public static ip address of the lighthouse node | 
+| nebula_dns | false | if `true` lighthouse will act as dns server on `0.0.0.0:53` | 
 
 ### Nebula Host Variables
 | Variable | Default | Description |

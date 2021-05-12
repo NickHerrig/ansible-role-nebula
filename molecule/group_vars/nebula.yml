@@ -5,6 +5,7 @@ nebula_device_config_dir: "~/git/ansible-role-nebula/configs"
 
 nebula_lighthouse_public_ip: 157.168.0.23
 nebula_lighthouse_private_ip: 10.0.3.1
+nebula_dns: true
 
 nebula_client_devices:
   - nebula_hostname: "laptop"

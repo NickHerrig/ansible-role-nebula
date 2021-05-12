@@ -16,6 +16,7 @@ nebula_cidr: "/24"
 nebula_lighthouse_port: 4242
 nebula_lighthouse_private_ip: ~
 nebula_lighthouse_public_ip: ~
+nebula_dns: false
 
 # Nebula Host Variables
 nebula_is_lighthouse: false
