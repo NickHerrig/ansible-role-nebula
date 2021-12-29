@@ -7,7 +7,7 @@
 
 - name: create the organization certificate authority
   delegate_to: "{{ nebula_ca }}"
-  command: 'nebula-cert ca -name "{{ nebula_ca_name }}"'
+  command: 'nebula-cert ca {% if nebula_generate_qr %}-out-qr ca.crt.jpg{% endif %} -name "{{ nebula_ca_name }}"'
   run_once: true
   args:
     chdir: "{{ nebula_ca_dir }}"
@@ -34,7 +34,16 @@
 
 - name: sign certificates for nebula client devices
   delegate_to: "{{ nebula_ca }}"
-  command: "{{ 'nebula-cert sign -name ' + item.nebula_hostname + ' -ip ' + item.nebula_ip + nebula_cidr + ' -groups ' + item.nebula_groups }}"
+  command: >
+    nebula-cert sign
+    {% if 'nebula_client_qr' in item -%}
+    {% if item.nebula_client_qr -%}
+    -out-qr {{ item.nebula_hostname }}.jpg
+    {% endif -%}
+    {% endif -%}
+    -name {{ item.nebula_hostname }}
+    -ip {{ item.nebula_ip + nebula_cidr }}
+    -groups {{ item.nebula_groups }}
   args:
     chdir: "{{ nebula_ca_dir }}"
     creates: "{{ nebula_ca_dir }}/{{ item.nebula_hostname }}.crt"

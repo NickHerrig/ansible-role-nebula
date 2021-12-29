@@ -10,6 +10,7 @@ nebula_ca: localhost
 nebula_ca_name: ~
 nebula_ca_dir: ~
 nebula_device_config_dir: ~
+nebula_generate_qr: false
 
 # Nebula network default variables
 nebula_cidr: "/24"
@@ -37,6 +38,7 @@ nebula_client_devices: ~
 #  - nebula_hostname: "laptop"
 #    nebula_ip: 10.0.3.3
 #    nebula_groups: "laptop,ssh"
+#    nebula_client_qr: false
 #    nebula_outbound_firewall_rules: |
 #      - port: any
 #        proto: any
